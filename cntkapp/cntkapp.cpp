@@ -37,9 +37,12 @@ int _tmain(int argc, _TCHAR* argv[])
     auto deviceId=DeviceFromConfig(config);
 
 
-    std::vector<wstring> outputNodeNames;
+    wstring  outputNodeNameConfig;
+    std::vector<wstring> outputNodeNamesVector;
 
-    auto net = GetModelFromConfig<ConfigParameters, float>(config, outputNodeNames);
+    auto net = GetModelFromConfig<ConfigParameters, float>(config, outputNodeNameConfig,
+        outputNodeNamesVector);
+
     if (net == nullptr)
     {
         LogicError("Unable to construct network from description");
